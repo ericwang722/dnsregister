@@ -1,0 +1,14 @@
+{
+	"Comment": "AUTO CREATED interface",
+	"Changes": [{
+		"Action": "CREATE",
+		"ResourceRecordSet": {
+			"Name": "_DNS_NAME_",
+			"Type": "A",
+			"TTL": 100,
+			"ResourceRecords": [{
+				"Value": "_HOST_IP_"
+			}]
+		}
+	}]
+}
