@@ -23,7 +23,7 @@ HOST_IP=$(curl http://instance-data/latest/meta-data/public-ipv4)
 echo "{\"Changes\": [{ \"Action\": \"DELETE\",\"ResourceRecordSet\":"$(aws route53 list-resource-record-sets --hosted-zone-id $HOSTED_ZONE --query "ResourceRecordSets[?Name=='${DNS_NAME}.']" | sed '1d;$d')"}]}" > ${TMP_DIR}tmp_r53_a_recordsets.json
 
 #if the record is not found, the json coinfiguration will error out, let it go
-aws route53 change-resource-record-sets --hosted-zone-id Z3H0REHB7GF4Y5 --change-batch file://${TMP_DIR}tmp_r53_a_recordsets.json
+aws route53 change-resource-record-sets --hosted-zone-id $HOSTED_ZONE --change-batch file://${TMP_DIR}tmp_r53_a_recordsets.json
 
 #add the new a record
 cat /dnsregister/route53_action_template.json | \
